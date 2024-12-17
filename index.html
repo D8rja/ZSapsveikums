@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Christmas Card</title>
+  <style>
+    /* Body Styling */
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f0f8ff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      position: relative;
+      overflow: hidden; /* Prevents snowflakes from going outside the screen */
+    }
+
+    /* Card Styling */
+    .card {
+      background: linear-gradient(to bottom right, #ff5733, #ffbd69);
+      border-radius: 15px;
+      padding: 40px;
+      text-align: center;
+      box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      width: 100%;
+      z-index: 10; /* Ensures card is above snowflakes */
+    }
+
+    h1 {
+      color: white;
+      font-size: 3em;
+      margin-bottom: 20px;
+    }
+
+    /* Santa Claus Head */
+    .santa-head {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      background-color: #f5c6c7;
+      border-radius: 50%;
+      margin: 20px auto;
+      border: 2px solid #fff;
+    }
+
+    .santa-head::before {
+      content: '';
+      position: absolute;
+      top: -30px;
+      left: 25px;
+      width: 70px;
+      height: 50px;
+      background-color: #fff;
+      border-radius: 50%;
+      border: 2px solid #fff;
+    }
+
+    .eyes {
+      position: absolute;
+      top: 35px;
+      left: 15px;
+      width: 90px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .eye {
+      width: 12px;
+      height: 12px;
+      background-color: black;
+      border-radius: 50%;
+    }
+
+    .nose {
+      position: absolute;
+      top: 55px;
+      left: 40px;
+      width: 30px;
+      height: 30px;
+      background-color: #f06;
+      border-radius: 50%;
+      border: 2px solid #fff;
+    }
+
+    .beard {
+      position: absolute;
+      top: 65px;
+      left: 20px;
+      width: 80px;
+      height: 40px;
+      background-color: #fff;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .hat {
+      position: absolute;
+      top: -10px;
+      left: 10px;
+      width: 100px;
+      height: 50px;
+      background-color: red;
+      border-radius: 50% 50% 0 0;
+      border: 2px solid #fff;
+    }
+
+    .hat::after {
+      content: '';
+      position: absolute;
+      top: -15px;
+      left: 45px;
+      width: 15px;
+      height: 15px;
+      background-color: white;
+      border-radius: 50%;
+    }
+
+    /* Button Styling */
+    .btn {
+      background-color: #28a745;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1.2em;
+      cursor: pointer;
+      margin-top: 30px;
+      transition: background-color 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #218838;
+    }
+
+    /* Snowflakes Styling */
+    .snowflake {
+      position: absolute;
+      top: -10px;
+      background-color: white;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-100px);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>Merry Christmas!</h1>
+
+    <div class="santa-head">
+      <div class="eyes">
+        <div class="eye"></div>
+        <div class="eye"></div>
+      </div>
+      <div class="nose"></div>
+      <div class="beard"></div>
+      <div class="hat"></div>
+    </div>
+
+    <button class="btn" onclick="greet()">Click Me!</button>
+  </div>
+
+  <script>
+    function greet() {
+      alert("Ho Ho Ho! Merry Christmas!");
+    }
+
+    // Create snowflakes dynamically
+    function createSnowflakes() {
+      for (let i = 0; i < 50; i++) {
+        let snowflake = document.createElement('div');
+        snowflake.classList.add('snowflake');
+
+        // Random size for snowflakes
+        let size = Math.random() * 10 + 5;
+        snowflake.style.width = size + 'px';
+        snowflake.style.height = size + 'px';
+
+        // Random horizontal position
+        snowflake.style.left = Math.random() * 100 + '%';
+
+        // Random animation duration and delay
+        let duration = Math.random() * 3 + 3;
+        let delay = Math.random() * 5;
+
+        snowflake.style.animationDuration = duration + 's';
+        snowflake.style.animationDelay = delay + 's';
+
+        // Append snowflake to the body
+        document.body.appendChild(snowflake);
+      }
+    }
+
+    // Call function to create snowflakes
+    createSnowflakes();
+  </script>
+
+</body>
+</html>
